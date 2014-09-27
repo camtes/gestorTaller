@@ -1,0 +1,35 @@
+body {
+	background-color: rgb(240,240,240);
+}
+
+#login {
+	margin: 100px auto;
+	width: 350px;
+}
+
+#login-box {
+	margin-top: 20px;
+	height: 150px;
+	margin-top: 20px;
+	margin-left: 0;
+	padding: 26px 24px 46px;
+	color: #444;
+	background-color: rgb(255,255,255);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+	box-shadow: 0 1px 3px rgba(0,0,0,.13);
+	-webkit-border-radius: 5px 10px;
+}
+
+form input.text{
+	width: 295px;
+	font-size: 24px;
+}
+
+form input.enviar {
+	float: right;
+	font-size: 24px;
+}
+
+label {
+	margin: auto;
+}

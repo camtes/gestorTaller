@@ -1,0 +1,118 @@
+body {
+    margin: 0px;
+    font-family: "Open Sans", "Helvetica Neue", "Arial", sans;
+    font-size: 15px;
+    background-color: rgb(250,250,250);
+}
+
+body a {
+    text-decoration: none;
+    color: rgb(110,210,156);
+}
+
+#cabecera{
+    background-color: rgb(240,240,240);
+    background: rgb(240,240,240);
+    background-image: url('../img/logo.png');
+    position: fixed;
+    width: 100%;
+    background-repeat: no-repeat;
+    color: rgb(80,80,80);
+    padding-left: 20px;
+    height: 80px;
+    border-bottom: 1px solid rgb(200,200,200);
+    box-shadow: 1px 1px 2px rgb(200,200,200);
+}
+
+#cabecera #usuarioLogin {
+    margin: 55px;
+    margin-left: 15%;
+    float: left;
+}
+
+#cabecera h1 {
+    color: rgb(70,70,70);
+    float: left;
+}
+
+#cabecera h2 {
+    float: right;
+    text-align: center;
+    padding: 10px;
+    margin-right: 20px;
+    width: auto;
+}
+
+#botonMenu {
+    visibility: hidden;
+}       
+
+#menu a {
+    background: rgb(240,240,240);
+    font-size: 15px;
+    text-decoration: none;
+    padding: 20px;
+    border-right: 1px solid rgb(200,200,200);
+}
+
+#menu a:hover {
+    background: rgb(230,230,230);
+}
+
+#menu ul {
+    margin: 33px;
+    float: right;
+    list-style: none;
+    display: flex;
+}
+
+#contenedor {   
+    width: 960px;
+    height: 560px;
+    margin: auto;
+    padding-top: 90px;
+    padding-bottom: 20px;
+    overflow:auto;
+    background-color: rgb(250,250,250); 
+}
+
+#contenedor h2{
+    text-align: center;    
+    padding-bottom: 10px;
+}
+
+footer {
+    color: rgb(80,80,80);
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(240,240,240);
+    border-top: 1px solid rgb(200,200,200);
+}
+
+
+/* RESOLUCION DE MOVILES */
+@media screen and (max-width:400px) {
+    #contenedor{
+        width: 300px;
+        height: 398px;
+    }
+
+    #cabecera {
+        background-image: url('../img/logo-mini.png');
+        background-repeat: no-repeat;
+        position: fixed;
+        height: 40px;
+    }
+
+    #menu ul {
+        display: list;
+        visibility: hidden;
+    }
+
+    #botonMenu {
+        float: right;
+        margin: 35px;
+        margin-top: -90px;
+        visibility: visible;
+    }
+}
