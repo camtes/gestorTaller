@@ -64,20 +64,25 @@
 
                 </thead>
                 <tbody>
-                    <tr>
                     <?php
-                    foreach (cargarListaClientes() as $fila) {
+                    if (existen_usuario) {
+                        foreach (cargarListaClientes() as $fila) {
+                            echo "
+                            <tr>
+                                <td> <a href='#'>".$fila["nombre"]."</a></td>
+                                <td> ".$fila["telefono"]."</td>
+                                <td> ".$fila["telefono2"]."</td>
+                                <td> ".$fila["direccion"]."</td>
+                            </tr>";
+                        }
+                    }    
+                    else {
                         echo "
                         <tr>
-                            <td> <a href='#'>".$fila["nombre"]."</a></td>
-                            <td> ".$fila["telefono"]."</td>
-                            <td> ".$fila["telefono2"]."</td>
-                            <td> ".$fila["direccion"]."</td>
+                            <td colspan=4> No existen usuarios en el sistema </td>
                         </tr>";
-                    }   
+                    }
                     ?>
-                    
-                    
                 </tbody>
             </table>
         </section>

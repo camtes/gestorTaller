@@ -12,9 +12,9 @@ require_once("configuracion/configuracion.php");
         	    <ul>
             	    <li><a href="listado.php"> Inicio </a></li>
 	                <li><a href=""> Nuevo SAT </a></li>
-	                <li><a href=""> Búsqueda </a></li>
 	                <li><a href="cliente.php"> Clientes </a></li>
-	                <li><a class="final" href=""> Opciones</a></li>
+	                <li><a href=""> Informes </a></li>
+                    <li><a class="final" href=""> Búsqueda </a></li>
 	            </ul>
     		</nav>
     		';
@@ -30,6 +30,24 @@ require_once("configuracion/configuracion.php");
  	}
 
 // FUNCIONES CON USO DE BASE DE DATOS ---------------------------
+
+    function existen_usuario() {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT * FROM ".TABLA_CLIENTE;
+        $resultados = $conexion->query($consultaSQL);
+
+        if (count($resultados)>2) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     function insertar_cliente($nombre, $tlfn, $tlfn2, $dir) {
         try {

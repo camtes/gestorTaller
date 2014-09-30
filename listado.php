@@ -21,7 +21,7 @@
     </section>
     
     <section id="contenedor">
-        <h2> Listado de equipos informáticos</h2>
+        <h2> Listado de equipos informáticos en el taller</h2>
         <section id="contenido">
             <table border=0 summary="Listado de equipos informáticos" id="listado">
                 <thead>
@@ -29,12 +29,36 @@
                         <th> REP </th>
                         <th> Nombre </th>
                         <th> Telefono </th>
-                        <th> Solución </th>
-                        <th> Estado </th>
+                        <th> </th>
+                        <th> Problema </th>
+                        <th>  </th>
                     </tr>
 
                 </thead>
                 <tbody>
+                    <?php
+                        if (!existen_equiposTaller()) {
+                            echo "
+                            <tr>
+                                <td colspan=5> Buen trabajo, no hay ningún equipo en el taller </td>
+                            </tr>";
+                        } 
+                        else {
+                            foreach (cargarListaClientes() as $fila) {
+                                echo "
+                                <tr>
+                                    <td> <a href='#'>".$fila["rep"]."</a></td>
+                                    <td> ".obtener_nombre_cliente($fila["id_cliente"])."</td>
+                                    <td> ".obtener_tlfn1_cliente($fila["telefono"])."</td>
+                                    <td> ".obtener_tlfn1_cliente($fila["telefono2"])."</td>
+                                    <td> ".$fila["problema"]."</td>
+                                    <td> <a href='#'> cerrar </a> </td>
+                                </tr>";
+                            } 
+                        }
+                    ?>
+                    
+                    <!--
                     <tr>
                         <td><a href="#">01/14</a></td>
                         <td>Carlos</td>
@@ -42,6 +66,34 @@
                         <td>Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7</td>
                         <td> Reparado </td>
                     </tr>
+                    -->
+                </tbody>
+            </table>
+            <h2> Listado de equipos informáticos en espera de recogida </h2>
+            <table border=0 summary="Listado de equipos informáticos" id="listado">
+                <thead>
+                    <tr>
+                        <th> REP </th>
+                        <th> Nombre </th>
+                        <th> Telefono </th>
+                        <th> Solución </th>
+                        <th>  </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan=5> Buen trabajo, no hay ningún equipo en el taller </td>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td><a href="#">01/14</a></td>
+                        <td>Carlos</td>
+                        <td>680482120</td>
+                        <td>Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7</td>
+                        <td> Reparado </td>
+                    </tr>
+                    -->
                 </tbody>
             </table>
         </section>
