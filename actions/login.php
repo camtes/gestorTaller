@@ -15,8 +15,6 @@
 	    header('Location:../listado.php');
 	}
 	else {
-	    echo "<script> alert ('Usuario no identificado, vuelve a introducir el usuario y contraseña correctamente') </script>";
-	    
 	    header('Location:../index.php');
 	}
 ?>

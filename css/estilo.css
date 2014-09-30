@@ -14,6 +14,10 @@ body a:hover {
     color: rgb(110,210,156);
 }
 
+h3 {
+    text-align: center;
+}
+
 #cabecera{
     background-color: rgb(240,240,240);
     background: rgb(240,240,240);
