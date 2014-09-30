@@ -7,6 +7,10 @@ body {
 
 body a {
     text-decoration: none;
+    color: #727272;
+}
+
+body a:hover {
     color: rgb(110,210,156);
 }
 
@@ -53,6 +57,11 @@ body a {
     text-decoration: none;
     padding: 20px;
     border-right: 1px solid rgb(200,200,200);
+    margin-left: 5px;
+}
+
+#menu a.final {
+    border-right: 0px;
 }
 
 #menu a:hover {

@@ -9,7 +9,7 @@
 	                <li><a href=""> Nuevo SAT </a></li>
 	                <li><a href=""> Búsqueda </a></li>
 	                <li><a href=""> Clientes </a></li>
-	                <li><a href=""> Opciones</a></li>
+	                <li><a class="final" href=""> Opciones</a></li>
 	            </ul>
     		</nav>
     		';
