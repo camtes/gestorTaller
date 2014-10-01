@@ -69,7 +69,7 @@
                         foreach (cargarListaClientes() as $fila) {
                             echo "
                             <tr>
-                                <td> <a href='#'>".$fila["nombre"]."</a></td>
+                                <td> <a class='name' href='#'>".$fila["nombre"]."</a></td>
                                 <td> ".$fila["telefono"]."</td>
                                 <td> ".$fila["telefono2"]."</td>
                                 <td> ".$fila["direccion"]."</td>
@@ -90,5 +90,8 @@
     <footer>
         gestorTaller - Desarrollado por <a href="http://carloscamposfuentes.wordpress.com" target="_blank">Carlos Campos</a>.
     </footer>
+    
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
+    <script src="js/busqueda-clientes.js"></script>
 </body>
 </html>
