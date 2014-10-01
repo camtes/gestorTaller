@@ -1,7 +1,7 @@
 function filtrar(nombre) {
   var count = 0;
   $('#listado tbody tr').each(function () {
-    $(this).children("#name").each(function () {
+    $(this).children(".name").each(function () {
       var nombre_aux = $(this).val().toLowerCase();
       if ( nombre != nombre_aux ) { $(this).parent().hide(); } 
       else { count++; }
