@@ -51,7 +51,10 @@
                 </form>
             </section>
             <!-- Tabla de clientes en el sistema -->
-
+            <form action="" method="">
+                <input type="text" name="b-name" size=30 maxlength="50" required>
+                <input type="submit" id="buscar" name="buscar" value="Buscar" ></td>
+            </form>
             <h3> Listado de clientes </h3>
             <table summary="Listado de clientes" id="listado">
                 <thead>
