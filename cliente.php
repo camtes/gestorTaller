@@ -51,11 +51,7 @@
                 </form>
             </section>
             <!-- Tabla de clientes en el sistema -->
-            <form action="" method="">
-                <input type="text" name="b-name" id="b-name" size=30 maxlength="50" required>
-                <button id="buscar" name="buscar">Buscar</button>
-            </form>
-
+          
             <h3> Listado de clientes </h3>
             <form action="" method="" id="busq_cliente">
                 <input type="text" name="b-name" id="b-name" size=30 maxlength="50" required>
