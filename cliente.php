@@ -51,11 +51,11 @@
                 </form>
             </section>
             <!-- Tabla de clientes en el sistema -->
-            <form action="" method="">
-                <input type="text" name="b-name" size=30 maxlength="50" required>
-                <input type="button" id="buscar" name="buscar" value="Buscar" >
-            </form>
             <h3> Listado de clientes </h3>
+            <form action="" method="" id="busq_cliente">
+                <input type="text" name="b-name" id="b-name" size=30 maxlength="50" required>
+                <button id="buscar" name="buscar">Buscar</button>
+            </form>
             <table summary="Listado de clientes" id="listado">
                 <thead>
                     <tr>
@@ -63,6 +63,7 @@
                         <th> Telefono </th>
                         <th>  </th>
                         <th> Dirección </th>
+                        <th>  </th>
                     </tr>
 
                 </thead>
@@ -76,6 +77,7 @@
                                 <td> ".$fila["telefono"]."</td>
                                 <td> ".$fila["telefono2"]."</td>
                                 <td> ".$fila["direccion"]."</td>
+                                <td> <a href='rep.php?cliente=".$fila["id_cliente"]."'>nuevo rep</a></td>
                             </tr>";
                         }
                     }    
@@ -91,7 +93,7 @@
         </section>
     </section>
     <footer>
-        gestorTaller - Desarrollado por <a href="http://carloscamposfuentes.wordpress.com" target="_blank">Carlos Campos</a>.
+        <?php pintaFooter() ?>
     </footer>
     
     <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>

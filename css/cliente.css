@@ -2,6 +2,13 @@
 	width: 450px;
 	height: 100px;
 	margin: auto;
-	background-color: rgb(253,253,253);
+	border: 1px solid rgb(230,230,230);
+	background-color: rgb(245,245,245);
 	padding: 20px;   
+}
+
+#busq_cliente {
+	float: right;
+	margin-bottom: 10px;
+	margin-right: 28px;
 }

@@ -20,18 +20,12 @@ $(document).ready(function() {
     var nombre = $("input#b-name").val().toLowerCase();
     if (nombre != '') {
       filtrar(nombre);
+      $("#listado").show();
     }
     else {
       alert("No has introducido ningún nombre");
+      $("#listado").hide();
     }
     evt.preventDefault();
   }); 
 });
-
-//formulario
-/*
-<form action="" method="">
-  <input type="text" name="b-name" size=30 maxlength="50" required>
-  <input type="submit" id="buscar" name="buscar" value="Buscar" ></td>
-</form>
-*/

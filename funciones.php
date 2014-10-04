@@ -1,17 +1,13 @@
 <?php
 require_once("configuracion/configuracion.php");
 
-    function conectaBD($tabla) {
-
-    }
-
  	function pintaMenu() {
  		echo '
             <a id="usuarioLogin" href="#"> '.$_SESSION['usuario'].' </a>
  			<nav id="menu">
         	    <ul>
             	    <li><a href="listado.php"> Inicio </a></li>
-	                <li><a href=""> Nuevo SAT </a></li>
+	                <li><a href="rep.php"> Nuevo </a></li>
 	                <li><a href="cliente.php"> Clientes </a></li>
 	                <li><a href=""> Informes </a></li>
                     <li><a class="final" href=""> Búsqueda </a></li>
@@ -29,8 +25,30 @@ require_once("configuracion/configuracion.php");
     		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>';
  	}
 
+    function pintaFooter() {
+        echo '
+            gestorTaller - Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>';
+    }
+
 // FUNCIONES CON USO DE BASE DE DATOS ---------------------------
 
+    // Función que comprueba cual es el último cliente
+    function ultimo_cliente() {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT id_cliente FROM ".TABLA_CLIENTE." ORDER BY id_cliente DESC LIMIT 1";
+        $resultados = $conexion->query($consultaSQL);
+
+        foreach ($resultados as $fila) {
+            return $fila["id_cliente"];
+        }
+    }
+
+    // Función que comprueba si existen usuarios en la base de datos
     function existen_usuario() {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -49,6 +67,26 @@ require_once("configuracion/configuracion.php");
         }
     }
 
+    // Función que comprueba si existen equipos con el estado que se pasa por referencia
+    function existen_equipos($estado) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT * FROM ".TABLA_SAT." WHERE estado like '".$estado."'";
+        $resultados = $conexion->query($consultaSQL);
+
+        if (count($resultados)>1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    // Función para insertar un cliente en la base de datos
     function insertar_cliente($nombre, $tlfn, $tlfn2, $dir) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -70,6 +108,27 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
     }
 
+    // Función para insertar un nuevo sat en la base de datos
+    function insertar_sat($cliente, $rep, $problema) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        if ($rep == "") {
+            $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, problema, estado) VALUES 
+                            (".$cliente.",'".$problema."', 1)";
+        }
+        else {
+        $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, rep, problema, estado) VALUES 
+                            (".$cliente.",'".$rep."','".$problema."', 1)";
+        }
+        
+        $resultados = $conexion->query($consultaSQL);
+    }
+
+    // Función para cargar todos los clientes existentes en la base de datos
     function cargarListaClientes() {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -81,5 +140,81 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
 
         return $resultados;
+    }
+
+    // Función para obtener los datos de un cliente pasando su id por referencia
+    function cargarDatosCliente($cliente) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT * FROM ".TABLA_CLIENTE." WHERE id_cliente like '".$cliente."'";
+        $resultados = $conexion->query($consultaSQL);
+
+        return $resultados;
+    }
+
+    // Función para obtener los equipos según su estado
+    function cargar_equipos($estado) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT * FROM ".TABLA_SAT." WHERE estado like ".$estado;
+        $resultados = $conexion->query($consultaSQL);
+
+        return $resultados;
+    }
+
+    // Función para obtener el nombre del cliente por su id
+    function obtener_nombre_cliente($id_cliente) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT nombre FROM ".TABLA_CLIENTE." WHERE id_cliente like '".$id_cliente."'";
+        $resultados = $conexion->query($consultaSQL);
+
+        foreach ($resultados as $fila) {
+            return $fila["nombre"];
+        }
+    }
+
+    // Función para obtener el telefono del cliente por su id
+    function obtener_tlfn_cliente($id_cliente) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT telefono FROM ".TABLA_CLIENTE." WHERE id_cliente like '".$id_cliente."'";
+        $resultados = $conexion->query($consultaSQL);
+
+        foreach ($resultados as $fila) {
+            return $fila["telefono"];
+        }
+    }
+
+    // Función para obtener el telefono2 del cliente por su id
+    function obtener_tlfn2_cliente($id_cliente) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT telefono2 FROM ".TABLA_CLIENTE." WHERE id_cliente like '".$id_cliente."'";
+        $resultados = $conexion->query($consultaSQL);
+
+        foreach ($resultados as $fila) {
+            return $fila["telefono2"];
+        }
     }
 ?>
