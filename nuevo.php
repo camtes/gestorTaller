@@ -47,7 +47,7 @@
                             echo "
                             <tr>
                                 <td> <a class='name' id='cliente_nuevo_rep' 
-                                    href='rep.php?cliente=".$fila["id_cliente"]."'>".$fila["nombre"]."</a></td>
+                                    href='nuevo.php?cliente=".$fila["id_cliente"]."'>".$fila["nombre"]."</a></td>
                                 <td> ".$fila["telefono"]."</td>
                                 <td> ".$fila["telefono2"]."</td>
                                 <td> ".$fila["direccion"]."</td>
@@ -82,9 +82,9 @@
                                 <td><input type="text" name="fnombre" value="'.$fila["nombre"].'" 
                                         size=30 maxlength="50"  disabled></td>
                                 <td>
-                                    <input type="text" name="ftelefono" value="'.$fila["telefono"].'" 
+                                    <input type="number" name="ftelefono" value="'.$fila["telefono"].'" 
                                             size=15 maxlength="9" disabled>
-                                    <input type="text" name="ftelefono2" value="'.$fila["telefono2"].'" 
+                                    <input type="number" name="ftelefono2" value="'.$fila["telefono2"].'" 
                                             size=15 maxlength="9" disabled>
                                 </td>
                                 </tr>
@@ -94,7 +94,7 @@
                                 <tr>
                                     <td><input type="text" name="fdireccion" value="'.$fila["direccion"].'" 
                                             size=50 maxlength="50" disabled></td>
-                                    <td>REP <input type="text" name="frep" size=30 maxlength="10"></td>
+                                    <td>REP <input type="text" name="frep" size=30 maxlength="9" placeholder="Ultimo rep: '.ultimo_rep().'"></td>
                                 </tr>
                                 <tr>
                                     <td>Problema</td>
@@ -123,8 +123,8 @@
                         <tr>
                         <td><input type="text" name="fnombre" size=30 maxlength="50" required></td>
                         <td>
-                            <input type="text" name="ftelefono" size=15 maxlength="9" required>
-                            <input type="text" name="ftelefono2" size=15 maxlength="9">
+                            <input type="number" name="ftelefono" size=10 max="999999999" required>
+                            <input type="number" name="ftelefono2" size=10 max="999999999">
                         </td>
                         </tr>
                         <tr>
@@ -133,7 +133,7 @@
                         </tr>
                         <tr>
                             <td><input type="text" name="fdireccion" size=50 maxlength="50" required></td>
-                            <td>REP <input type="text" name="frep" size=30 maxlength="10"></td>
+                            <td>REP <input type="text" name="frep" size=30 maxlength="9" placeholder="Ultimo rep: '.ultimo_rep().'"></td>
                         </tr>
                         <tr>
                             <td>Problema</td>

@@ -1,4 +1,4 @@
-#listado {
+#listado, #listado2 {
     margin: auto;
     width: 900px;
     background-color: rgb(240,240,240);
@@ -6,25 +6,32 @@
     border-collapse: collapse;
 }
 
-#listado td {
+#listado td, #listado2 td {
     padding: 8px;
     
 }
 
-#listado th {
+#listado th, #listado2 th {
     background-color: rgb(40, 40, 40);
     color: rgb(235,235,235);
     padding-left: 10px;
 }
 
-#listado th, #listado td {
+#listado th, #listado td, #listado2 th, #listado2 td{
     border-bottom: 1px solid rgb(210,210,210);
     text-align: left;
 }
 
-#listado a {
+#listado a , #listado2 a{
     
     color: rgb(110,210,156);
-    text-decoration: underline;
-    
+    text-decoration: none;   
+}
+
+#listado .opciones, #listado2 .opciones {
+    text-align: right;
+}
+
+input[type=number] {
+   width: 96px;
 }

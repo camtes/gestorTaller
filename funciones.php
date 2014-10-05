@@ -7,7 +7,7 @@ require_once("configuracion/configuracion.php");
  			<nav id="menu">
         	    <ul>
             	    <li><a href="listado.php"> Inicio </a></li>
-	                <li><a href="rep.php"> Nuevo </a></li>
+	                <li><a href="nuevo.php"> Nuevo </a></li>
 	                <li><a href="cliente.php"> Clientes </a></li>
 	                <li><a href=""> Informes </a></li>
                     <li><a class="final" href=""> Búsqueda </a></li>
@@ -31,6 +31,22 @@ require_once("configuracion/configuracion.php");
     }
 
 // FUNCIONES CON USO DE BASE DE DATOS ---------------------------
+
+    // Función que comprueba cual es el último rep introducido
+    function ultimo_rep() {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT rep FROM ".TABLA_SAT." ORDER BY 1 DESC LIMIT 1";
+        $resultados = $conexion->query($consultaSQL);
+
+        foreach ($resultados as $fila) {
+            return $fila["rep"];
+        }
+    }
 
     // Función que comprueba cual es el último cliente
     function ultimo_cliente() {
@@ -75,15 +91,11 @@ require_once("configuracion/configuracion.php");
         }
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
-        $consultaSQL = "SELECT * FROM ".TABLA_SAT." WHERE estado like '".$estado."'";
+        $consultaSQL = "SELECT * FROM ".TABLA_SAT." WHERE estado like ".$estado;
         $resultados = $conexion->query($consultaSQL);
 
-        if (count($resultados)>1) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return count($resultados);
+        
     }
 
     // Función para insertar un cliente en la base de datos
@@ -128,6 +140,40 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
     }
 
+    // Función para actualizar la entrada de sat identificado por el id_sat
+    function actualizar_sat($sat, $informe, $piezas, $precio_rep, $precio_piezas, $estado) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $precio_final = $precio_rep + $precio_piezas;
+
+        $consultaSQL = "UPDATE sat SET informe='".$informe."',
+                                        piezas='".$piezas."',
+                                        precio_rep='".$precio_rep."',
+                                        precio_piezas='".$precio_piezas."',
+                                        precio='".$precio_final."',
+                                        estado=".$estado."
+                        WHERE id_sat like ".$sat;
+        
+        $resultados = $conexion->query($consultaSQL);
+    }
+
+    // Función para cerrar la entrada de sat identificado por el id_sat
+    function cerrar_sat($sat) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "UPDATE sat SET estado=3 WHERE id_sat like ".$sat;
+        
+        $resultados = $conexion->query($consultaSQL);
+    }
+
     // Función para cargar todos los clientes existentes en la base de datos
     function cargarListaClientes() {
         try {
@@ -165,6 +211,20 @@ require_once("configuracion/configuracion.php");
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
         $consultaSQL = "SELECT * FROM ".TABLA_SAT." WHERE estado like ".$estado;
+        $resultados = $conexion->query($consultaSQL);
+
+        return $resultados;
+    }
+
+    // Función para obtener los datos de un sat por su id
+    function cargar_sat($id_sat) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT * FROM ".TABLA_SAT." WHERE id_sat like ".$id_sat;
         $resultados = $conexion->query($consultaSQL);
 
         return $resultados;
@@ -215,6 +275,22 @@ require_once("configuracion/configuracion.php");
 
         foreach ($resultados as $fila) {
             return $fila["telefono2"];
+        }
+    }
+
+    // Función para obtener la direccion del cliente por su id
+    function obtener_direccion_cliente($id_cliente) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT direccion FROM ".TABLA_CLIENTE." WHERE id_cliente like '".$id_cliente."'";
+        $resultados = $conexion->query($consultaSQL);
+
+        foreach ($resultados as $fila) {
+            return $fila["direccion"];
         }
     }
 ?>
