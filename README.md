@@ -1,9 +1,9 @@
 gestorTaller
 ============
 
-Gestión de la entrada y salida de un taller informático.
+Gestión de la entrada y salida de un taller informático. <br>
 
-Para la instalación, es necesario tener una base de datos MySQL y seguir los siguientes pasos:
+Para la instalación, es necesario tener una base de datos MySQL y seguir los siguientes pasos: <br>
 1. Crear la base de datos a través del archivo llamado **"base-de-datos.txt"**
 2. Configurar el archivo configuracion/configuracion.php
 	1. Modificar la variable llamada **"host"**
