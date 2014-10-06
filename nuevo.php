@@ -70,7 +70,7 @@
             if ($_GET["cliente"] > 0) {
                 foreach (cargarDatosCliente($_GET["cliente"]) as $fila) {
                     echo '
-                        <form action="actions/nuevo_sat.php" method="post" id="nuevo_sat">
+                        <form action="acciones/nuevo_sat.php" method="post" id="nuevo_sat">
                         <input type="hidden" name="fcliente" value='.$_GET["cliente"].'>
                         <input type="hidden" name="fexiste_cliente" value="true">
                             <table summary="Nuevo sat">
@@ -113,7 +113,7 @@
             }   
             else {
                 echo '
-                    <form action="actions/nuevo_sat.php" method="post" id="nuevo_sat">
+                    <form action="acciones/nuevo_sat.php" method="post" id="nuevo_sat">
                         <input type="hidden" name="fexiste_cliente" value="false">
                         <table summary="Nuevo sat">
                         <tr>

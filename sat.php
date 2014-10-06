@@ -28,7 +28,7 @@
         <?php
             foreach (cargar_sat($_GET["id"]) as $fila) {
                 echo '
-                    <form action="actions/modificar_sat.php" method="post" id="sat">
+                    <form action="acciones/modificar_sat.php" method="post" id="sat">
                     <input type="hidden" name="fsat" value='.$_GET["id"].'>
                         <table summary="Nuevo sat">
                             <tr>

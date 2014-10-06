@@ -38,25 +38,16 @@
                 </thead>
                 <tbody>
                     <?php
-
-                        if (existen_equipos(1) >= 1) {
-                            foreach (cargar_equipos(1) as $fila) {
-                                echo "
-                                <tr>
-                                    <td> ".$fila["rep"]."</a></td>
-                                    <td> ".obtener_nombre_cliente($fila["id_cliente"])."</td>
-                                    <td> ".obtener_tlfn_cliente($fila["id_cliente"])."</td>
-                                    <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
-                                    <td> ".$fila["problema"]."</td>
-                                    <td class='opciones'> <a href='sat.php?id=".$fila["id_sat"]."'> Editar </a>  </td>
-                                </tr>";
-                            }
-                        } 
-                        else {
+                        foreach (cargar_equipos(1) as $fila) {
                             echo "
                             <tr>
-                                <td colspan=5> No hay ningún equipo en el taller </td>
-                            </tr>"; 
+                                <td> ".$fila["rep"]."</a></td>
+                                <td> ".obtener_nombre_cliente($fila["id_cliente"])."</td>
+                                <td> ".obtener_tlfn_cliente($fila["id_cliente"])."</td>
+                                <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
+                                <td> ".$fila["problema"]."</td>
+                                <td class='opciones'> <a href='sat.php?id=".$fila["id_sat"]."'> Editar </a>  </td>
+                            </tr>";
                         }
                     ?>
                 </tbody>
@@ -78,36 +69,19 @@
                 </thead>
                 <tbody>
                     <?php
-                        if (existen_equipos(2) >= 1) {
-                            foreach (cargar_equipos(2) as $fila) {
-                                echo "
-                                <tr>
-                                    <td> ".$fila["rep"]."</a></td>
-                                    <td> ".obtener_nombre_cliente($fila["id_cliente"])."</td>
-                                    <td> ".obtener_tlfn_cliente($fila["id_cliente"])."</td>
-                                    <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
-                                    <td> ".$fila["informe"]."</td>
-                                    <td> ".$fila["precio"]."</td>
-                                    <td class='opciones'> <a href='actions/cerrar_sat.php?id=".$fila["id_sat"]."'> Cerrar </a>  </td>
-                                </tr>";
-                            }  
-                        } 
-                        else {
+                        foreach (cargar_equipos(2) as $fila) {
                             echo "
                             <tr>
-                                <td colspan=5> No hay ningún equipo reparado sin recoger </td>
+                                <td> ".$fila["rep"]."</a></td>
+                                <td> ".obtener_nombre_cliente($fila["id_cliente"])."</td>
+                                <td> ".obtener_tlfn_cliente($fila["id_cliente"])."</td>
+                                <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
+                                <td> ".$fila["informe"]."</td>
+                                <td> ".$fila["precio"]."</td>
+                                <td class='opciones'> <a href='acciones/cerrar_sat.php?id=".$fila["id_sat"]."'> Cerrar </a>  </td>
                             </tr>";
                         }
                     ?>
-                    <!--
-                    <tr>
-                        <td><a href="#">01/14</a></td>
-                        <td>Carlos</td>
-                        <td>680482120</td>
-                        <td>Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7Se le cambia la fuente de alimentación y se vuelve a instalar windows 7</td>
-                        <td> Reparado </td>
-                    </tr>
-                    -->
                 </tbody>
             </table>
         </section>

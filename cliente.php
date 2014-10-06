@@ -25,7 +25,7 @@
         <h2> Clientes</h2>
         <section id="contenido">
             <secton id="nuevo_cliente">
-                <form action="actions/nuevo_cliente.php" method="post">
+                <form action="acciones/nuevo_cliente.php" method="post">
                     <table summary="Nuevo cliente">
                         <tr>
                             <td>Nombre</td>

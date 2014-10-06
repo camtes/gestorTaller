@@ -17,7 +17,7 @@
 	<section id="login">
 		<header><img src="img/logo.png"></header>
 		<section id="login-box">
-			<form action="actions/login.php" method="post">
+			<form action="acciones/login.php" method="post">
 				Usuario
 				<br>
 				<input type="text" name="fUsuario" class="text">
