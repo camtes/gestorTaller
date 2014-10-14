@@ -95,8 +95,7 @@
     </section>
     <footer>
         <?php pintaFooter() ?>
-    </footer>
-    
+    </footer>  
     <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
     <script src="js/busqueda-clientes.js"></script>
 </body>
