@@ -1,10 +1,10 @@
 <?php
     if (!isset($_SESSION)){
         session_start();
-    } 
+    }
     else {
         header("Location:index.html");
-    }   
+    }
     require_once("funciones.php");
 ?>
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
         <?php pintaMenu() ?>
         <a id="botonMenu" href="#"><span><img src="img/menu.png"></span></a>
     </section>
-    
+
     <section id="contenedor">
         <h2> Listado de equipos informáticos en el taller</h2>
         <section id="contenido">
@@ -78,7 +78,7 @@
                                 <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
                                 <td> ".$fila["informe"]."</td>
                                 <td> ".$fila["precio"]."</td>
-                                <td class='opciones'> <a href='acciones/cerrar_sat.php?id=".$fila["id_sat"]."'> Cerrar </a>  </td>
+                                <td class='opciones'> <a href='sat.php?id=".$fila["id_sat"]."'>Ver </a> - <a href='acciones/cerrar_sat.php?id=".$fila["id_sat"]."'> Cerrar </a>  </td>
                             </tr>";
                         }
                     ?>
