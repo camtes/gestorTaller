@@ -27,7 +27,7 @@ require_once("configuracion/configuracion.php");
 
     function pintaFooter() {
         echo '
-            gestorTaller - Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>';
+            © gestorTaller - Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>';
     }
 
 // FUNCIONES CON USO DE BASE DE DATOS ---------------------------
@@ -95,7 +95,7 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
 
         return count($resultados);
-        
+
     }
 
     // Función para insertar un cliente en la base de datos
@@ -107,16 +107,16 @@ require_once("configuracion/configuracion.php");
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
         if ($tlfn2 == "") {
-            $consultaSQL = "INSERT INTO ".TABLA_CLIENTE."(nombre, telefono, 
-                        direccion) VALUES ('".$nombre."', ".$tlfn.", 
+            $consultaSQL = "INSERT INTO ".TABLA_CLIENTE."(nombre, telefono,
+                        direccion) VALUES ('".$nombre."', ".$tlfn.",
                         '".$dir."')";
         }
         else {
-        $consultaSQL = "INSERT INTO ".TABLA_CLIENTE."(nombre, telefono, telefono2, 
-                        direccion) VALUES ('".$nombre."', ".$tlfn.", 
+        $consultaSQL = "INSERT INTO ".TABLA_CLIENTE."(nombre, telefono, telefono2,
+                        direccion) VALUES ('".$nombre."', ".$tlfn.",
                         ".$tlfn2.", '".$dir."')";
         }
-        
+
         $resultados = $conexion->query($consultaSQL);
     }
 
@@ -129,14 +129,14 @@ require_once("configuracion/configuracion.php");
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
         if ($rep == "") {
-            $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, problema, estado) VALUES 
+            $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, problema, estado) VALUES
                             (".$cliente.",'".$problema."', 1)";
         }
         else {
-        $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, rep, problema, estado) VALUES 
+        $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, rep, problema, estado) VALUES
                             (".$cliente.",'".$rep."','".$problema."', 1)";
         }
-        
+
         $resultados = $conexion->query($consultaSQL);
     }
 
@@ -157,7 +157,7 @@ require_once("configuracion/configuracion.php");
                                         precio='".$precio_final."',
                                         estado=".$estado."
                         WHERE id_sat like ".$sat;
-        
+
         $resultados = $conexion->query($consultaSQL);
     }
 
@@ -170,7 +170,7 @@ require_once("configuracion/configuracion.php");
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
         $consultaSQL = "UPDATE sat SET estado=3 WHERE id_sat like ".$sat;
-        
+
         $resultados = $conexion->query($consultaSQL);
     }
 
