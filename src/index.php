@@ -2,7 +2,7 @@
 	header('Location:listado.php');
 	if (!isset($_SESSION)){
 	    session_start();
-	}    
+	}
 	require_once("funciones.php");
 ?>
 <!DOCTYPE html>

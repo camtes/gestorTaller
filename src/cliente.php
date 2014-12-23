@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                             <td><input type="text" name="fnombre" size=30 maxlength="50" required></td>
-                            <td><input type="text" name="ftelefono" size=10 maxlength="9" required></td>
+                            <td><input type="text" name="ftelefono" size=10 maxlength="9"></td>
                             <td><input type="text" name="ftelefono2" size=10 maxlength="9"></td>
                         </tr>
                         <tr>
@@ -43,7 +43,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td><input type="text" name="fdireccion" size=50 maxlength="50" required></td>
+                            <td><input type="text" name="fdireccion" size=50 maxlength="50"></td>
                             <td></td>
                             <td><input type="submit" value="Crear cliente" ></td>
                         </tr>
@@ -78,7 +78,7 @@
                                 <td> ".$fila["telefono"]."</td>
                                 <td> ".$fila["telefono2"]."</td>
                                 <td> ".$fila["direccion"]."</td>
-                                <td> <a href='rep.php?cliente=".$fila["id_cliente"]."'>nuevo rep</a></td>
+                                <td> <a href='nuevo.php?cliente=".$fila["id_cliente"]."'>nuevo rep</a></td>
                             </tr>";
                         }
                     }

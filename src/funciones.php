@@ -9,8 +9,8 @@ require_once("configuracion/configuracion.php");
             	    <li><a href="listado.php"> Inicio </a></li>
 	                <li><a href="nuevo.php"> Nuevo </a></li>
 	                <li><a href="cliente.php"> Clientes </a></li>
-	                <li><a href=""> Informes </a></li>
-                    <li><a class="final" href=""> Búsqueda </a></li>
+	                <li><a href="#" disabled> Informes </a></li>
+                    <li><a class="final" href="#" disabled> Búsqueda </a></li>
 	            </ul>
     		</nav>
     		';
@@ -27,7 +27,7 @@ require_once("configuracion/configuracion.php");
 
     function pintaFooter() {
         echo '
-            © gestorTaller - Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>';
+          gestorTaller - Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>';
     }
 
 // FUNCIONES CON USO DE BASE DE DATOS ---------------------------

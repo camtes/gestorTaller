@@ -1,6 +1,3 @@
--- Creación de la base de datos para gestorTaller
-CREATE DATABASE `gestorTaller;
-USE gestorTaller;
 
 --
 -- Table structure for table `cliente`
@@ -37,5 +34,9 @@ CREATE TABLE `sat` (
 
 UNLOCK TABLES;
 
-grant all privileges on gestorTaller.* to 'gTaller_user'@'%' identified by 'g3stor' with grant option;
-flush privileges;
+--
+-- Si no tienes ningún usuario para la base de datos de gestorTaller, con las dos líneas de abajo
+-- 
+--
+-- grant all privileges on gestorTaller.* to 'gTaller_user'@'%' identified by 'g3stor' with grant option;
+-- flush privileges;
