@@ -1,10 +1,10 @@
 <?php
     if (!isset($_SESSION)){
         session_start();
-    } 
+    }
     else {
         header("Location:index.html");
-    }   
+    }
     require_once("funciones.php");
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <?php pintaMenu() ?>
         <a id="botonMenu" href="#"><span><img src="img/menu.png"></span></a>
     </section>
-    
+
     <section id="contenedor">
         <h2> Clientes</h2>
         <section id="contenido">
@@ -51,7 +51,7 @@
                 </form>
             </section>
             <!-- Tabla de clientes en el sistema -->
-          
+
             <h3> Listado de clientes </h3>
             <form action="" method="" id="busq_cliente">
                 <input type="text" name="b-name" id="b-name" size=30 maxlength="50" required>
@@ -81,7 +81,7 @@
                                 <td> <a href='rep.php?cliente=".$fila["id_cliente"]."'>nuevo rep</a></td>
                             </tr>";
                         }
-                    }    
+                    }
                     else {
                         echo "
                         <tr>
@@ -95,7 +95,7 @@
     </section>
     <footer>
         <?php pintaFooter() ?>
-    </footer>  
+    </footer>
     <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
     <script src="js/busqueda-clientes.js"></script>
 </body>
