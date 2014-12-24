@@ -1,10 +1,10 @@
 <?php
     if (!isset($_SESSION)){
         session_start();
-    } 
+    }
     else {
         header("Location:index.html");
-    }   
+    }
     require_once("funciones.php");
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <?php pintaMenu() ?>
         <a id="botonMenu" href="#"><span><img src="img/menu.png"></span></a>
     </section>
-    
+
     <section id="contenedor">
         <h2> SAT</h2>
         <section id="contenido">
@@ -30,72 +30,65 @@
                 echo '
                     <form action="acciones/modificar_sat.php" method="post" id="sat">
                     <input type="hidden" name="fsat" value='.$_GET["id"].'>
-                        <table summary="Nuevo sat">
-                            <tr>
-                                <td>Nombre</td>
-                                <td>Telefono</td>
-                            </tr>
-                            <tr>
-                            <td><input type="text" name="fnombre" value="'.obtener_nombre_cliente($fila["id_cliente"]).'" 
-                                    size=30 maxlength="50"  disabled></td>
+                        <table summary="Nuevo sat" id="tablaNuevoSAT">
+                          <tr>
+                            <td>Nombre </td>
+                            <td>Teléfono </td>
+                            <td> Problema </td>
+                          </tr>
+                          <tr>
                             <td>
-                                <input type="text" name="ftelefono" value="'.obtener_tlfn_cliente($fila["id_cliente"]).'" 
-                                        size=15 maxlength="9" disabled>
-                                <input type="text" name="ftelefono2" value="'.obtener_tlfn2_cliente($fila["id_cliente"]).'" 
-                                        size=15 maxlength="9" disabled>
+                              <input type="text" name="fnombre" value="'.obtener_nombre_cliente($fila["id_cliente"]).'" size=40 maxlength="50"  disabled>
+                              <br>
+                              Dirección <br>
+                              <input type="text" name="fdireccion" value="'.obtener_direccion_cliente($fila["id_cliente"]).'" size=40 maxlength="50" disabled>
                             </td>
-                            </tr>
-                            <tr>
-                                <td>Dirección</td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" name="fdireccion" value="'.obtener_direccion_cliente($fila["id_cliente"]).'" 
-                                        size=50 maxlength="50" disabled></td>
-                                <td>REP <input type="text" name="frep" size=30 maxlength="10"  placeholder="Ultimo rep: '.ultimo_rep().'" value="'.$fila["rep"].'"></td>
-                            </tr>
-                            <tr>
-                                <td>Problema</td>
-                            </tr>
-                            <tr>
-                                <td colspan=3>
-                                    <textarea name="fproblema" rows="5" cols="67" disabled>
-                                    '.$fila["problema"].'
-                                    </textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Informe</td>
-                            </tr>
-                            <tr>
-                                <td colspan=3>
-                                    <textarea name="finforme" rows="5" cols="67" >
-                                    '.$fila["informe"].'
-                                    </textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Piezas</td>
-                            </tr>
-                            <tr>
-                                <td colspan=3>
-                                    <textarea name="fpiezas" rows="5" cols="67" >
-                                    '.$fila["piezas"].'
-                                    </textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan=2> Precio reparación 
-                                    <input type="number" name="fpreciorep" value="'.$fila["precio_rep"].'" size=5 > 
-                                 Precio piezas 
-                                    <input type="number" name="fpreciopiezas" value="'.$fila["precio_piezas"].'" size=5> </td>
-                            <tr>
-                                <td><input type="checkbox" name="festado" value="2"> Cerrar SAT</td>
-                                <td><input type="submit" value="Guardar sat" class="derecha"></td>
+                            <td>
+                              <input type="text" name="ftelefono" value="'.obtener_tlfn_cliente($fila["id_cliente"]).'" size=20 maxlength="9" disabled>
+                              <input type="text" name="ftelefono" value="'.obtener_tlfn_cliente($fila["id_cliente"]).'" size=20 maxlength="9" disabled>
+                            </td>
+                            <td>
+                              <textarea name="fproblema" rows="6" cols="74" disabled>'.$fila["problema"].'"</textarea>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>REP <input type="text" name="frep" size=30 maxlength="10"  placeholder="Ultimo rep: '.ultimo_rep().'" value="'.$fila["rep"].'"></td>
+                          </tr>
+                          <tr></tr>
+                          <tr>
 
+                            <td>Informe</td>
+                          </tr>
+                          <tr>
+                            <td colspan=4>
+                              <textarea name="finforme" rows="7" cols="175" >'.$fila["informe"].'</textarea>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Piezas</td>
+                          </tr>
+                          <tr>
+                            <td colspan=4>
+                              <textarea name="fpiezas" rows="7" cols="175" >'.$fila["piezas"].'</textarea>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td> Precio reparación </td>
+                            <td> Precio piezas </td>
+
+                          </tr>
+                          <tr>
+                                <td> <input type="number" name="fpreciorep" value="'.$fila["precio_rep"].'" size=10 ></td>
+                                <td> <input type="number" name="fpreciopiezas" value="'.$fila["precio_piezas"].'" size=10 ></td>
+
+                                <td colspan=2>
+                                  <input type="checkbox" name="festado" value="2"> Marcar la casilla para cerrar el SAT
+                                  <input type="submit" value="Guardar sat" class="derecha">
+                                </td>
                             </tr>
                         </table>
                     </form>';
-            }            
+            }
         ?>
         </section>
     </section>

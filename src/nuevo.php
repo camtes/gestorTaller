@@ -80,21 +80,16 @@
                                 </tr>
                                 <tr>
                                 <td><input type="text" name="fnombre" value="'.$fila["nombre"].'"
-                                        size=30 maxlength="50"  disabled></td>
+                                        size=50 maxlength="50"  disabled></td>
                                 <td>
                                     <input type="number" name="ftelefono" value="'.$fila["telefono"].'"
-                                            size=15 maxlength="9" disabled>
+                                            size=30 maxlength="9" disabled>
                                     <input type="number" name="ftelefono2" value="'.$fila["telefono2"].'"
-                                            size=15 maxlength="9" disabled>
+                                            size=30 maxlength="9" disabled>
                                 </td>
                                 </tr>
                                 <tr>
-                                  <td></td>
-                                  <td></td>
-                                  <td>Dirección</td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" name="fdireccion" value="'.$fila["direccion"].'"
+                                    <td>Dirección <input type="text" name="fdireccion" value="'.$fila["direccion"].'"
                                             size=50 maxlength="50" disabled></td>
                                     <td>REP <input type="text" name="frep" size=30 maxlength="9" placeholder="Ultimo rep: '.ultimo_rep().'"></td>
                                 </tr>
@@ -103,7 +98,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan=3>
-                                        <textarea name="fproblema" rows="10" cols="67" required></textarea>
+                                        <textarea name="fproblema" rows="10" cols="92" required></textarea>
                                     </td>
                                 </tr>
                                 <tr>
@@ -123,18 +118,14 @@
                             <td>Telefono</td>
                         </tr>
                         <tr>
-                        <td><input type="text" name="fnombre" size=30 maxlength="50" required></td>
+                          <td><input type="text" name="fnombre" size=50 maxlength="50" required></td>
                         <td>
-                            <input type="number" name="ftelefono" size=10 max="999999999" >
-                            <input type="number" name="ftelefono2" size=10 max="999999999">
+                            <input type="number" name="ftelefono" size=30 max="999999999" >
+                            <input type="number" name="ftelefono2" size=30 max="999999999">
                         </td>
                         </tr>
                         <tr>
-                            <td>Dirección</td>
-
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="fdireccion" size=50 maxlength="50" ></td>
+                            <td>Dirección <input type="text" name="fdireccion" size=50 maxlength="50" ></td>
                             <td>REP <input type="text" name="frep" size=30 maxlength="9" placeholder="Ultimo rep: '.ultimo_rep().'"></td>
                         </tr>
                         <tr>
@@ -142,7 +133,7 @@
                         </tr>
                         <tr>
                             <td colspan=3>
-                                <textarea name="fproblema" rows="10" cols="67" required></textarea>
+                                <textarea name="fproblema" rows="10" cols="92" required></textarea>
                             </td>
                         </tr>
                         <tr>

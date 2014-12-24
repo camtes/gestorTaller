@@ -77,7 +77,7 @@
                                 <td> ".obtener_tlfn_cliente($fila["id_cliente"])."</td>
                                 <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
                                 <td> ".$fila["informe"]."</td>
-                                <td> ".$fila["precio"]."</td>
+                                <td> ".$fila["precio"]." €</td>
                                 <td class='opciones'> <a href='sat.php?id=".$fila["id_sat"]."'>Ver </a> - <a href='acciones/cerrar_sat.php?id=".$fila["id_sat"]."'> Cerrar </a>  </td>
                             </tr>";
                         }

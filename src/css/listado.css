@@ -8,7 +8,6 @@
 
 #listado td, #listado2 td {
     padding: 8px;
-    
 }
 
 #listado th, #listado2 th {
@@ -23,9 +22,9 @@
 }
 
 #listado a , #listado2 a{
-    
+
     color: rgb(110,210,156);
-    text-decoration: none;   
+    text-decoration: none;
 }
 
 #listado .opciones, #listado2 .opciones {
