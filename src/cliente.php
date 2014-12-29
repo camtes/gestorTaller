@@ -26,7 +26,7 @@
         <section id="contenido">
             <secton id="nuevo_cliente">
                 <form action="acciones/nuevo_cliente.php" method="post">
-                    <table summary="Nuevo cliente">
+                    <table summary="Nuevo cliente" >
                         <tr>
                             <td>Nombre</td>
                             <td>Telefono</td>
@@ -45,7 +45,7 @@
                         <tr>
                             <td><input type="text" name="fdireccion" size=50 maxlength="50"></td>
                             <td></td>
-                            <td><input type="submit" value="Crear cliente" ></td>
+                            <td><input type="submit" value="Crear cliente"  class="boton"></td>
                         </tr>
                    </table>
                 </form>
@@ -55,8 +55,9 @@
             <h3> Listado de clientes </h3>
             <form action="" method="" id="busq_cliente">
                 <input type="text" name="b-name" id="b-name" size=30 maxlength="50" required>
-                <button id="buscar" name="buscar">Buscar</button>
+                <button id="buscar" name="buscar" class="boton">Buscar</button>
             </form>
+            <br />
             <table summary="Listado de clientes" id="listado">
                 <thead>
                     <tr>
@@ -78,7 +79,7 @@
                                 <td> ".$fila["telefono"]."</td>
                                 <td> ".$fila["telefono2"]."</td>
                                 <td> ".$fila["direccion"]."</td>
-                                <td> <a href='nuevo.php?cliente=".$fila["id_cliente"]."'>nuevo rep</a></td>
+                                <td> <a href='nuevo.php?cliente=".$fila["id_cliente"]."'>Nuevo rep</a></td>
                             </tr>";
                         }
                     }

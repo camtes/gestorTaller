@@ -18,7 +18,6 @@
 <body>
     <section id="cabecera">
         <?php pintaMenu() ?>
-        <a id="botonMenu" href="#"><span><img src="img/menu.png"></span></a>
     </section>
 
     <section id="contenedor">
@@ -37,8 +36,8 @@
                             <td> Problema </td>
                           </tr>
                           <tr>
-                            <td>
-                              <input type="text" name="fnombre" value="'.obtener_nombre_cliente($fila["id_cliente"]).'" size=40 maxlength="50"  disabled>
+                            <td class="arriba">
+                              <input type="text"  name="fnombre" value="'.obtener_nombre_cliente($fila["id_cliente"]).'" size=40 maxlength="50"  disabled>
                               <br>
                               Dirección <br>
                               <input type="text" name="fdireccion" value="'.obtener_direccion_cliente($fila["id_cliente"]).'" size=40 maxlength="50" disabled>
@@ -78,12 +77,18 @@
 
                           </tr>
                           <tr>
-                                <td> <input type="number" name="fpreciorep" value="'.$fila["precio_rep"].'" size=10 ></td>
+                                <td> <input type="number" name="fpreciorep" value="'.$fila["precio_rep"].'" size=10 required></td>
                                 <td> <input type="number" name="fpreciopiezas" value="'.$fila["precio_piezas"].'" size=10 ></td>
 
-                                <td colspan=2>
-                                  <input type="checkbox" name="festado" value="2"> Marcar la casilla para cerrar el SAT
-                                  <input type="submit" value="Guardar sat" class="derecha">
+                                <td colspan=2>';
+                                if ($fila["estado"] == 2) {
+                                  echo '<input type="checkbox" name="festado" value="2" checked> Cerrar SAT';
+                                }
+                                else {
+                                  echo '<input type="checkbox" name="festado" value="2"> Cerrar SAT';
+                                }
+                                echo '
+                                <input type="submit" value="Guardar sat" class="boton">
                                 </td>
                             </tr>
                         </table>
