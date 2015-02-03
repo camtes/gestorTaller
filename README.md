@@ -14,10 +14,10 @@ Debes de seguir los siguientes pasos:
 		create database gestorTaller;
 
 2. Crear un usuario para dicha base de datos, por defecto en el sistema está configurada para el usuario **gTaller_user** con contraseña **g3stor**, aunque es recomendable cambiarlo
-```sql
+	```sql
 	grant all privileges on gestorTaller.* to gTaller_usera@'%' identified by 'g3stor' with grant option;  
 	flush privileges;
-```
+	```
 3. Ejecutar el script llamado **gestorTaller.sql** situado en la carpeta script con el usuario creado anteriormente y en la base de datos.
 
 		mysql -u gTaller_user -p -h <server_ip> < gestorTaller.sql
