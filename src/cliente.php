@@ -18,7 +18,6 @@
 <body>
     <section id="cabecera">
         <?php pintaMenu() ?>
-        <a id="botonMenu" href="#"><span><img src="img/menu.png"></span></a>
     </section>
 
     <section id="contenedor">

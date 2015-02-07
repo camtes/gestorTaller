@@ -3,15 +3,14 @@ require_once("configuracion/configuracion.php");
 
  	function pintaMenu() {
  		echo '
-            <a id="usuarioLogin" href="#"> '.$_SESSION['usuario'].' </a>
  			<nav id="menu">
-        	    <ul>
-            	    <li><a href="listado.php"> Inicio </a></li>
-	                <li><a href="nuevo.php"> Nuevo </a></li>
-	                <li><a href="cliente.php"> Clientes </a></li>
-	                <li><a href="#" disabled> Informes </a></li>
-                    <li><a class="final" href="#" disabled> Búsqueda </a></li>
-	            </ul>
+  	    <ul>
+      	    <li><a href="listado.php"> Inicio </a></li>
+            <li><a href="nuevo.php"> Nuevo </a></li>
+            <li><a href="cliente.php"> Clientes </a></li>
+            <li><a href="#" disabled> Informes </a></li>
+              <li><a class="final" href="#" disabled> Búsqueda </a></li>
+        </ul>
     		</nav>
     		';
  	}
@@ -27,7 +26,8 @@ require_once("configuracion/configuracion.php");
 
     function pintaFooter() {
         echo '
-          gestorTaller - Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>';
+          <a href="http://github.com/gestorTaller" target="_blank"> gestorTaller</a> -
+          Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>';
     }
 
 // FUNCIONES CON USO DE BASE DE DATOS ---------------------------
