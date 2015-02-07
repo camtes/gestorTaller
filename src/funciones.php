@@ -8,7 +8,7 @@ require_once("configuracion/configuracion.php");
       	    <li><a href="listado.php"> Inicio </a></li>
             <li><a href="nuevo.php"> Nuevo </a></li>
             <li><a href="cliente.php"> Clientes </a></li>
-            <li><a href="#" disabled> Informes </a></li>
+            <li><a href="informes.php" disabled> Informes </a></li>
               <li><a class="final" href="#" disabled> Búsqueda </a></li>
         </ul>
     		</nav>
