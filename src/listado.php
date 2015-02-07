@@ -45,7 +45,11 @@
                                 <td> ".obtener_tlfn_cliente($fila["id_cliente"])."</td>
                                 <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
                                 <td> ".$fila["problema"]."</td>
-                                <td class='opciones'> <a href='sat.php?id=".$fila["id_sat"]."'> Editar </a>  </td>
+                                <td class='opciones'>
+                                    <a href='sat.php?id=".$fila["id_sat"]."'>
+                                      <i class='fa fa-pencil-square-o fa-lg'></i>
+                                    </a>
+                                </td>
                             </tr>";
                         }
                     ?>
@@ -78,7 +82,14 @@
                                 <td> ".obtener_tlfn_cliente($fila["id_cliente"])."</td>
                                 <td> ".obtener_tlfn2_cliente($fila["id_cliente"])."</td>
                                 <td> ".$fila["precio"]." €</td>
-                                <td class='opciones'> <a href='sat.php?id=".$fila["id_sat"]."'>Ver </a> - <a href='acciones/cerrar_sat.php?id=".$fila["id_sat"]."'> Cerrar </a>  </td>
+                                <td class='opciones'>
+                                  <a href='sat.php?id=".$fila["id_sat"]."'>
+                                    <i class='fa fa-eye fa-lg'></i>
+                                  </a>
+                                  <a href='acciones/cerrar_sat.php?id=".$fila["id_sat"]."'>
+                                    <i class='fa fa-times fa-lg'></i>
+                                  </a>
+                                </td>
                             </tr>";
                         }
                     ?>

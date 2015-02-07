@@ -20,6 +20,7 @@ require_once("configuracion/configuracion.php");
  			<title>gestorTaller</title>
  			<link rel="icon" type="image/png" href="img/favicon.png" />
     		<link rel="stylesheet" type="text/css" href="css/estilo.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     		<meta name="viewport" content="width=device-width, initial-scale=1" />
     		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>';
  	}
