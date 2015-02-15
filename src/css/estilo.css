@@ -110,6 +110,20 @@ form input {
   border: 1px solid rgb(96, 180, 130);
 }
 
+.select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 30px;
+  background-color:#f0f0f0;
+  }
+
+/* Seccion para informe */
+#anioForm {
+  float: right;
+  margin-right: 20px;
+}
+
 footer {
   color: rgb(80,80,80);
   text-align: center;

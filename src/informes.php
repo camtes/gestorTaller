@@ -21,14 +21,16 @@
   <section id="contenedor">
     <h2> Informes </h2>
     <section id="contenido">
-      <select name="anioInforme" id="anioInforme">
-        <?php
-        foreach (generarAnios() as $fila) {
-          echo "<option value='".$fila["anio"]."'>".$fila["anio"]."</option>";
-        }
-        ?>
-      </select>
-      <button id="botonRefrescarInform" name="botonRefrescarInform" class="boton"> Refrescar informes </button>
+      <div id="anioForm">
+        <select name="anioInforme" id="anioInforme" class="select">
+          <?php
+          foreach (generarAnios() as $fila) {
+            echo "<option value='".$fila["anio"]."'>".$fila["anio"]."</option>";
+          }
+          ?>
+        </select>
+        <button id="botonRefrescarInform" name="botonRefrescarInform" class="boton"> Refrescar informes </button>
+      </div>
       <div id="informe1" style="width:100%; height:400px;"></div>
       <br >
       <br>
