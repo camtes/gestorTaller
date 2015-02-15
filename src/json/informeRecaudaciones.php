@@ -6,13 +6,13 @@ $data = array();
 
 for ($i = 1; $i <= 12; $i++) {
     if ($i >= 10) {
-        $mes = generar_json_informeReparaciones($i);
+        $mes = generar_json_informeRecaudaciones($i);
     }
     else {
-        $mes = generar_json_informeReparaciones("0".$i);
+        $mes = generar_json_informeRecaudaciones("0".$i);
     }
 
-    $data[] = array(intval($mes));
+    $data[] = array(floatval($mes));
 }
 
 //Creamos el JSON

@@ -1,5 +1,5 @@
-$(function () {
-  $('#informe1').highcharts({
+function informeRep(dataRep) {
+    $('#informe1').highcharts({
       chart: {
           backgroundColor: 'rgb(250,250,250)',
           type: 'column'
@@ -20,7 +20,7 @@ $(function () {
               'Septiembre',
               'Octubre',
               'Noviembre',
-              'Deciembre'
+              'Diciembre'
           ]
       },
       yAxis: {
@@ -45,14 +45,14 @@ $(function () {
       },
       series: [{
           name: 'Reparaciones',
-          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+          data: dataRep,
           color: 'rgb(110,210,156)'
       }]
-
-
   });
+}
 
-  $('#informe2').highcharts({
+function informeRec(dataRec) {
+    $('#informe2').highcharts({
       chart: {
         backgroundColor: 'rgb(250,250,250)',
         type: 'column'
@@ -73,7 +73,7 @@ $(function () {
               'Septiembre',
               'Octubre',
               'Noviembre',
-              'Deciembre'
+              'Diciembre'
           ]
       },
       yAxis: {
@@ -97,11 +97,32 @@ $(function () {
           }
       },
       series: [{
-          name: 'Reparaciones',
-          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+          name: 'Recaudaciones',
+          data: dataRec,
           color: 'rgb(110,210,156)'
 
       }]
   });
+}
 
+$(document).ready(function() {
+    $.ajax({
+        url: 'json/informeReparaciones',
+        type: 'GET',
+        async: true,
+        dataType: 'json',
+        success: function(data) {
+            informeRep(data);
+        }
+    });
+
+    $.ajax({
+        url: 'json/informeRecaudaciones',
+        type: 'GET',
+        async: true,
+        dataType: 'json',
+        success: function(data) {
+            informeRec(data);
+        }
+    });
 });
