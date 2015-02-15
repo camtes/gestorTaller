@@ -306,8 +306,8 @@ require_once("configuracion/configuracion.php");
         $consultaSQL = SELECT fecha_entrada FROM .TABLA_CLIENTE " GROUP BY 1";
     }
 */
-    // Función para generar JSON para los informes
-    function generar_json_informes($mes) {
+    // Función para generar JSON para el informe de reparaciones
+    function generar_json_informeReparaciones($mes) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -320,6 +320,25 @@ require_once("configuracion/configuracion.php");
         foreach ($resultado as $fila) {
             return $fila["mes"];
         }
+    }
+
+    // Función para generar JSON para el informe de recaudaciones
+    function generar_json_informeRecaudaciones($mes) {
+        $total = 0;
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT precio FROM ".TABLA_SAT." WHERE fecha_entrada LIKE '%-$mes-%'";
+        $resultado = $conexion->query($consultaSQL);
+
+        foreach ($resultado as $fila) {
+            $total = $total + $fila['precio'];
+        }
+
+        return $total;
     }
 
 ?>
