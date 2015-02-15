@@ -105,8 +105,34 @@ function informeRec(dataRec) {
   });
 }
 
+function pintarInforme(anio) {
+  $.ajax({
+        data: {"anio" : anio},
+        url: 'json/informeReparaciones',
+        type: 'GET',
+        async: true,
+        dataType: 'json',
+        success: function(data) {
+            informeRep(data);
+        }
+    });
+
+
+    $.ajax({
+        data: {"anio" : anio},
+        url: 'json/informeRecaudaciones',
+        type: 'GET',
+        async: true,
+        dataType: 'json',
+        success: function(data) {
+            informeRec(data);
+        }
+    });
+}
+
 $(document).ready(function() {
     $.ajax({
+        data: {"anio": 2015},
         url: 'json/informeReparaciones',
         type: 'GET',
         async: true,
@@ -117,6 +143,7 @@ $(document).ready(function() {
     });
 
     $.ajax({
+        data: {"anio": 2015},
         url: 'json/informeRecaudaciones',
         type: 'GET',
         async: true,
@@ -125,4 +152,9 @@ $(document).ready(function() {
             informeRec(data);
         }
     });
+
+  $("#botonRefrescarInform").on('click', function(evt) {
+    var anio = $("#anioInforme").val();
+    pintarInforme(anio);
+  });
 });

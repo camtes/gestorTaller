@@ -21,6 +21,14 @@
   <section id="contenedor">
     <h2> Informes </h2>
     <section id="contenido">
+      <select name="anioInforme" id="anioInforme">
+        <?php
+        foreach (generarAnios() as $fila) {
+          echo "<option value='".$fila["anio"]."'>".$fila["anio"]."</option>";
+        }
+        ?>
+      </select>
+      <button id="botonRefrescarInform" name="botonRefrescarInform" class="boton"> Refrescar informes </button>
       <div id="informe1" style="width:100%; height:400px;"></div>
       <br >
       <br>

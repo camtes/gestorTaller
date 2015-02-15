@@ -296,25 +296,28 @@ require_once("configuracion/configuracion.php");
     }
 
     // Función para obtener cuantos años hay disponibles
-    /*function obtener_anios() {
-        try {
+    function generarAnios() {
+      try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
-        $consultaSQL = SELECT fecha_entrada FROM .TABLA_CLIENTE " GROUP BY 1";
+        $consultaSQL = "SELECT anio FROM ".TABLA_SAT." GROUP BY anio DESC";
+        $resultado = $conexion->query($consultaSQL);
+
+        return $resultado;
     }
-*/
+
     // Función para generar JSON para el informe de reparaciones
-    function generar_json_informeReparaciones($mes) {
+    function generar_json_informeReparaciones($mes, $anio) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
-        $consultaSQL = "SELECT COUNT(*) as mes FROM ".TABLA_SAT." WHERE fecha_entrada LIKE '%-$mes-%'";
+        $consultaSQL = "SELECT COUNT(*) as mes FROM ".TABLA_SAT." WHERE fecha_entrada LIKE '$anio-$mes-%'";
         $resultado = $conexion->query($consultaSQL);
 
         foreach ($resultado as $fila) {
@@ -323,7 +326,7 @@ require_once("configuracion/configuracion.php");
     }
 
     // Función para generar JSON para el informe de recaudaciones
-    function generar_json_informeRecaudaciones($mes) {
+    function generar_json_informeRecaudaciones($mes, $anio) {
         $total = 0;
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -331,7 +334,7 @@ require_once("configuracion/configuracion.php");
         }
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
-        $consultaSQL = "SELECT precio FROM ".TABLA_SAT." WHERE fecha_entrada LIKE '%-$mes-%'";
+        $consultaSQL = "SELECT precio FROM ".TABLA_SAT." WHERE fecha_entrada LIKE '$anio-$mes-%'";
         $resultado = $conexion->query($consultaSQL);
 
         foreach ($resultado as $fila) {
