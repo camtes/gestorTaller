@@ -12,8 +12,6 @@
 <head>
   <meta charset="UTF-8">
   <?php pintaHeader() ?>
-  <link rel="stylesheet" type="text/css" href="css/listado.css">
-  <link rel="stylesheet" type="text/css" href="css/rep.css">
 </head>
 <body>
   <section id="cabecera">

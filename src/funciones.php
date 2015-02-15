@@ -130,12 +130,12 @@ require_once("configuracion/configuracion.php");
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
         if ($rep == "") {
-            $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, problema, estado) VALUES
-                            (".$cliente.",'".$problema."', 1)";
+            $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, problema, estado, fecha_entrada) VALUES
+                            (".$cliente.",'".$problema."', 1, '".date('Y-m-d')."')";
         }
         else {
-        $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, rep, problema, estado) VALUES
-                            (".$cliente.",'".$rep."','".$problema."', 1)";
+        $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, rep, problema, estado, fecha_entrada) VALUES
+                            (".$cliente.",'".$rep."','".$problema."', 1, '".date('Y-m-d')."')";
         }
 
         $resultados = $conexion->query($consultaSQL);
@@ -294,4 +294,32 @@ require_once("configuracion/configuracion.php");
             return $fila["direccion"];
         }
     }
+
+    // Función para obtener cuantos años hay disponibles
+    /*function obtener_anios() {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = SELECT fecha_entrada FROM .TABLA_CLIENTE " GROUP BY 1";
+    }
+*/
+    // Función para generar JSON para los informes
+    function generar_json_informes($mes) {
+        try {
+            $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+        $consultaSQL = "SELECT COUNT(*) as mes FROM ".TABLA_SAT." WHERE fecha_entrada LIKE '%-$mes-%'";
+        $resultado = $conexion->query($consultaSQL);
+
+        foreach ($resultado as $fila) {
+            return $fila["mes"];
+        }
+    }
+
 ?>
