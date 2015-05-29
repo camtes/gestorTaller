@@ -10,7 +10,7 @@ CREATE TABLE `cliente` (
   `telefono2` int(11),
   `direccion` varchar(50),
   PRIMARY KEY (`id_cliente`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf-8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `sat`
@@ -24,6 +24,7 @@ CREATE TABLE `sat` (
   `informe` varchar(255) DEFAULT NULL,
   `fecha_entrada`date NOT NULL,
   `fecha_salida`date NULL,
+  `anio` int(4) NOT NULL,
   `piezas` varchar(255) DEFAULT NULL,
   `precio_rep` double DEFAULT NULL,
   `precio_piezas` double DEFAULT NULL,
@@ -31,7 +32,7 @@ CREATE TABLE `sat` (
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_sat`),
   KEY `id_cliente` (`id_cliente`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf-8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 
 UNLOCK TABLES;
