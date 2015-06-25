@@ -11,6 +11,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="css/busqueda.css">
   <?php pintaHeader() ?>
 </head>
 <body>
@@ -19,22 +20,13 @@
   </section>
 
   <section id="contenedor">
-    <h2> Informes </h2>
+    <h2> Búsqueda </h2>
     <section id="contenido">
-      <div id="anioForm">
-        <select name="anioInforme" id="anioInforme" class="select">
-          <?php
-          foreach (generarAnios() as $fila) {
-            echo "<option value='".$fila["anio"]."'>".$fila["anio"]."</option>";
-          }
-          ?>
-        </select>
-        <button id="botonRefrescarInform" name="botonRefrescarInform" class="boton"> Refrescar informes </button>
-      </div>
-      <div id="informe1" style="width:100%; height:400px;"></div>
-      <br >
-      <br>
-      <div id="informe2" style="width:100%; height:400px;"></div>
+      <form id="formSearchREP">
+        <span class="form"><i class="fa fa-search"></i></span>
+        <input class="form-control" type="text" placeholder="Buscar por REP: 1/15">
+        <input type="submit" class="boton" value="Buscar">
+      </form>
     </section>
   </section>
   <footer>

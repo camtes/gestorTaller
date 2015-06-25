@@ -9,7 +9,7 @@ require_once("configuracion/configuracion.php");
             <li><a href="nuevo.php"> Nuevo </a></li>
             <li><a href="cliente.php"> Clientes </a></li>
             <li><a href="informes.php" disabled> Informes </a></li>
-              <li><a class="final" href="#" disabled> Búsqueda </a></li>
+              <li><a class="final" href="busqueda.php" disabled> Búsqueda </a></li>
         </ul>
     		</nav>
     		';
@@ -130,12 +130,12 @@ require_once("configuracion/configuracion.php");
         catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
 
         if ($rep == "") {
-            $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, problema, estado, fecha_entrada) VALUES
-                            (".$cliente.",'".$problema."', 1, '".date('Y-m-d')."')";
+            $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, problema, estado, fecha_entrada, anio) VALUES
+                            (".$cliente.",'".$problema."', 1, '".date('Y-m-d')."','".date('Y')."' )";
         }
         else {
-        $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, rep, problema, estado, fecha_entrada) VALUES
-                            (".$cliente.",'".$rep."','".$problema."', 1, '".date('Y-m-d')."')";
+        $consultaSQL = "INSERT INTO ".TABLA_SAT."(id_cliente, rep, problema, estado, fecha_entrada, anio) VALUES
+                            (".$cliente.",'".$rep."','".$problema."', 1, '".date('Y-m-d')."', '".date('Y')."')";
         }
 
         $resultados = $conexion->query($consultaSQL);

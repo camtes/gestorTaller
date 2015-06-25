@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>gestorTaller</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
+  <link rel="stylesheet" type="text/css" href="css/busqueda.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> 
+</head>
+<body>
+  <section id="cabecera">
+    <nav id="menu">
+      <ul>
+        <li><a href="listado.php"> Inicio </a></li>
+        <li><a href="nuevo.php"> Nuevo </a></li>
+        <li><a href="cliente.php"> Clientes </a></li>
+        <li><a href="informes.php" disabled> Informes </a></li>
+        <li><a class="final" href="busqueda.php" disabled> Búsqueda </a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section id="contenedor">
+    <h2> Búsqueda </h2>
+    <section id="contenido">
+      <form id="formSearchREP">
+        <span class="form"><i class="fa fa-search"></i></span>
+        <input class="form-control" type="text" placeholder="Buscar por REP: 1/15">
+        <input type="submit" class="boton" value="Buscar">
+      </form>
+      
+      <table border=0 summary="Listado de equipos informáticos" id="resBusqueda">
+        <thead>
+            <tr>
+                <th> SAT </th>
+                <th> Nombre </th>
+                <th> Fecha E/S </th>
+                <th> </th>
+                <th> Problema </th>
+                <th> Solución </th>
+                <th> </th>
+            </tr>
+        </thead>
+      </table>
+    </section>
+  </section>
+  <footer>
+    <a href="http://github.com/gestorTaller" target="_blank"> gestorTaller</a> -
+          Desarrollado por <a href="http://www.ccamposfuentes.es" target="_blank">Carlos Campos</a>'
+  </footer>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="js/informes.js"></script>
+</body>
+</html>

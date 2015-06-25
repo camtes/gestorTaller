@@ -1,0 +1,16 @@
+#formSearchREP i{
+  margin-right: -5px;
+  height: 14.5px;
+  width: 30px;
+  padding: 7px;
+  border: 1px solid #cccccc;
+  border-right: 0px;
+}
+
+input {
+  padding: 3px;
+}
+
+#contenido {
+  text-align: center;
+}

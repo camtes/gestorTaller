@@ -108,7 +108,7 @@ function informeRec(dataRec) {
 function pintarInforme(anio) {
   $.ajax({
         data: {"anio" : anio},
-        url: 'json/informeReparaciones',
+        url: 'json/informeReparaciones.php',
         type: 'GET',
         async: true,
         dataType: 'json',
@@ -120,7 +120,7 @@ function pintarInforme(anio) {
 
     $.ajax({
         data: {"anio" : anio},
-        url: 'json/informeRecaudaciones',
+        url: 'json/informeRecaudaciones.php',
         type: 'GET',
         async: true,
         dataType: 'json',
@@ -133,7 +133,7 @@ function pintarInforme(anio) {
 $(document).ready(function() {
     $.ajax({
         data: {"anio": 2015},
-        url: 'json/informeReparaciones',
+        url: 'json/informeReparaciones.php',
         type: 'GET',
         async: true,
         dataType: 'json',
@@ -144,7 +144,7 @@ $(document).ready(function() {
 
     $.ajax({
         data: {"anio": 2015},
-        url: 'json/informeRecaudaciones',
+        url: 'json/informeRecaudaciones.php',
         type: 'GET',
         async: true,
         dataType: 'json',
