@@ -22,7 +22,7 @@
   <section id="contenedor">
     <h2> Búsqueda </h2>
     <section id="contenido">
-      <form id="formSearchREP">
+      <form id="formSearchRtusEP">
         <span class="form"><i class="fa fa-search"></i></span>
         <input class="form-control" type="text" placeholder="Buscar por REP: 1/15">
         <input type="submit" class="boton" value="Buscar">

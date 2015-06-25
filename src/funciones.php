@@ -33,7 +33,10 @@ require_once("configuracion/configuracion.php");
 
 // FUNCIONES CON USO DE BASE DE DATOS ---------------------------
 
-    // Función que comprueba cual es el último rep introducido
+    /** Función que comprueba cual es el último rep introducido
+    *
+    * return el último rep guardado.
+    */
     function ultimo_rep() {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -49,7 +52,10 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función que comprueba cual es el último cliente
+    /** Función que comprueba cual es el último cliente
+    *
+    * return: id_cliente del último creado.
+    */
     function ultimo_cliente() {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -65,7 +71,11 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función que comprueba si existen usuarios en la base de datos
+    /* Función que comprueba si existen usuarios en la base de datos
+    *
+    * return: true si existen usuarios creados
+    *         false si no existen.
+    */
     function existen_usuario() {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -84,7 +94,13 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función que comprueba si existen equipos con el estado que se pasa por referencia
+    /* Función que comprueba si existen equipos con el estado que se pasa por referencia
+    *
+    * arg:
+    *   - $estado: Estado en el que se encuentra el equipo (taller, reparado o recogido)
+    *
+    * return: Número de equipos con dicho estado.
+    */
     function existen_equipos($estado) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -99,7 +115,14 @@ require_once("configuracion/configuracion.php");
 
     }
 
-    // Función para insertar un cliente en la base de datos
+    /* Función para insertar un cliente en la base de datos
+    *
+    * arg:
+    *   - $nombre: nombre del cliente
+    *   - $tlfn: telefono de contacto
+    *   - $tlfn2: segundo telefono de contaco
+    *   - $dir: dirección del cliente.
+    */
     function insertar_cliente($nombre, $tlfn, $tlfn2, $dir) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -121,7 +144,13 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
     }
 
-    // Función para insertar un nuevo sat en la base de datos
+    /* Función para insertar un nuevo sat en la base de datos
+    *
+    * arg:
+    *   - $cliente: id_cliente asociado al sat
+    *   - $rep: identificador del equipo
+    *   - $problema: problema del equipo
+    */
     function insertar_sat($cliente, $rep, $problema) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -141,7 +170,16 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
     }
 
-    // Función para actualizar la entrada de sat identificado por el id_sat
+    /* Función para actualizar la entrada de sat identificado por el id_sat
+    *
+    * arg:
+    *   - $sat: Identificador de sat
+    *   - $informe: Solución al problema
+    *   - $piezas: Piezas cambiadas
+    *   - $precio_rep: Precio de la reparación
+    *   - $precio_piezas: Precio de las piezas
+    *   - $estado: estado del equipo (taller, reparado o recogido)
+    */
     function actualizar_sat($sat, $informe, $piezas, $precio_rep, $precio_piezas, $estado) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -162,7 +200,11 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
     }
 
-    // Función para cerrar la entrada de sat identificado por el id_sat
+    /* Función para cerrar la entrada de sat identificado por el id_sat
+    *
+    * arg:
+    *   - $sat: identificador del servicio.
+    */
     function cerrar_sat($sat) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -175,7 +217,10 @@ require_once("configuracion/configuracion.php");
         $resultados = $conexion->query($consultaSQL);
     }
 
-    // Función para cargar todos los clientes existentes en la base de datos
+    /* Función para cargar todos los clientes existentes en la base de datos
+    *
+    * return: Lista de clientes guardados.
+    */
     function cargarListaClientes() {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -189,7 +234,13 @@ require_once("configuracion/configuracion.php");
         return $resultados;
     }
 
-    // Función para obtener los datos de un cliente pasando su id por referencia
+    /* Función para obtener los datos de un cliente pasando su id por referencia
+    *
+    * arg:
+    *   - $cliente: identificador del cliente
+    *
+    * return: Datos del cliente.
+    */
     function cargarDatosCliente($cliente) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -203,7 +254,13 @@ require_once("configuracion/configuracion.php");
         return $resultados;
     }
 
-    // Función para obtener los equipos según su estado
+    /* Función para obtener los equipos según su estado
+    *
+    * arg:
+    *   - $estado: Estado del equipo (taller, reparado o recogido)
+    *
+    * return: Lista de dispoositivos con dicho estado.
+    */
     function cargar_equipos($estado) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -217,7 +274,13 @@ require_once("configuracion/configuracion.php");
         return $resultados;
     }
 
-    // Función para obtener los datos de un sat por su id
+    /* Función para obtener los datos de un sat por su id
+    *
+    * arg:
+    *   - $id_sat: Identificador del servicio
+    *
+    * return: Datos del SAT especificado.
+    */
     function cargar_sat($id_sat) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -231,7 +294,13 @@ require_once("configuracion/configuracion.php");
         return $resultados;
     }
 
-    // Función para obtener el nombre del cliente por su id
+    /* Función para obtener el nombre del cliente por su id
+    *
+    * arg:
+    *   - $id_cliente: idenficador del cliente.
+    *
+    * return: Nombre del cliente identificado.
+    */
     function obtener_nombre_cliente($id_cliente) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -247,7 +316,13 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función para obtener el telefono del cliente por su id
+    /* Función para obtener el telefono del cliente por su id
+    *
+    * arg:
+    *   - $id_cliente: identificador del cliente
+    *
+    * result: Telefono del cliente identificado
+    */
     function obtener_tlfn_cliente($id_cliente) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -263,7 +338,13 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función para obtener el telefono2 del cliente por su id
+    /* Función para obtener el telefono2 del cliente por su id
+    *
+    * arg:
+    *   - $id_cliente: identificador del cliente
+    *
+    * result: Telefono2 del cliente identificado.
+    */
     function obtener_tlfn2_cliente($id_cliente) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -279,7 +360,13 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función para obtener la direccion del cliente por su id
+    /* Función para obtener la direccion del cliente por su id
+    *
+    * arg:
+    *   - $id_cliente: identificador del cliente
+    *
+    * result: Dirección del cliente identificado.
+    */
     function obtener_direccion_cliente($id_cliente) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -295,7 +382,10 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función para obtener cuantos años hay disponibles
+    /* Función para obtener cuantos años hay disponibles
+    *
+    * result: Lista de años de mayor a menor
+    */
     function generarAnios() {
       try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -309,7 +399,14 @@ require_once("configuracion/configuracion.php");
         return $resultado;
     }
 
-    // Función para generar JSON para el informe de reparaciones
+    /* Función para generar JSON para el informe de reparaciones
+    *
+    * arg:
+    *   - $mes: mes para calcular el informe
+    *   - $anio: Año para calcular el informe
+    *
+    * result: Número de reparaciones en el mes y año especificado.
+    */
     function generar_json_informeReparaciones($mes, $anio) {
         try {
             $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
@@ -325,7 +422,14 @@ require_once("configuracion/configuracion.php");
         }
     }
 
-    // Función para generar JSON para el informe de recaudaciones
+    /* Función para generar JSON para el informe de recaudaciones
+    *
+    * arg:
+    *   - $mes: mes para calcular el informe
+    *   - $anio: Año para calcular el informe
+    *
+    * result: Número de euros ganados en el mes y año especificado.
+    */
     function generar_json_informeRecaudaciones($mes, $anio) {
         $total = 0;
         try {
@@ -342,6 +446,26 @@ require_once("configuracion/configuracion.php");
         }
 
         return $total;
+    }
+
+    /* Función para generar JSON para obtener los sat realizados por un REP
+    *
+    * arg:
+    *   - $rep: Identificador de equipo
+    *
+    * result: Lista de SAT con dicho rep
+    */
+    function generar_json_busquedaRep($rep) {
+      try {
+        $conexion = new PDO(DB_DSN, DB_USUARIO, DB_CONTRASENA);
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      }
+      catch (PDOException $e) {echo "Conexión fallida: ".$e->getMessage();}
+
+      $consultaSQL = "SELECT * FROM =".TABLA_SAT." WHERE rep LIKE $rep";
+      $resultado = $conexion->query($consultaSQL);
+
+      return $resultado;
     }
 
 ?>

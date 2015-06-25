@@ -77,7 +77,7 @@
 
                           </tr>
                           <tr>
-                                <td> <input type="number" name="fpreciorep" value="'.$fila["precio_rep"].'" size=10 required></td>
+                                <td> <input type="number" name="fpreciorep" value="'.$fila["precio_rep"].'" size=10 ></td>
                                 <td> <input type="number" name="fpreciopiezas" value="'.$fila["precio_piezas"].'" size=10 ></td>
 
                                 <td colspan=2>';
