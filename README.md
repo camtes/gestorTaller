@@ -1,6 +1,8 @@
 gestorTaller
 ============
 
+[![continuousphp](https://img.shields.io/continuousphp/git-hub/doctrine/dbal/master.svg)]()
+
 **gestorTaller** es una aplicación escrita en **PHP** para la gestión de entrada y salida de un taller informático, donde podrás llevar un historial de los ordenadores reparados tanto por el número que identifique a estos mismos, como por cliente guardado en el sistema, entre otras muchas cosas... <br>
 
 Actualmente está funcional una beta donde podrás tanto guardar clientes como entradas asociadas a dichos clientes, estoy implementando tanto las búsquedas como los informes.  
